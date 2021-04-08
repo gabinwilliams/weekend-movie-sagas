@@ -29,7 +29,7 @@ const Details = () => {
 
   console.log('default movie:', ClickedMovie);
 
-  if(ClickedMovie != {}) {
+  
     return (
       <Card className={classes.root}>
         <CardActionArea>
@@ -59,23 +59,8 @@ const Details = () => {
     );
   }
   
-  if(ClickedMovie === {}) {
-    return (
-      <>
-        <h1>Not ready yet.</h1>
-      </>
-    );
-  }
-  
-
-  
-
-   
-  
-
-
  
+  
 
-  }
 
 export default Details;
