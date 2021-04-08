@@ -25,27 +25,44 @@ const Details = () => {
 
   const movies = useSelector(store => store.movies);
 
-  const ClickedMovie = useSelector(store => store.clickedMovie);
+  const clickedMovie = useSelector(store => store.clickedMovie);
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  console.log('default movie:', ClickedMovie);
+  
 
-  if(ClickedMovie != {}) {
+  const getMovie = () =>{
+    movies.map(movie => {
+      if(movie.id == clickedMovie.id) {
+        console.log('This is found move:', movie);
+        dispatch({type: 'CLICKED_MOVIE', payload: movie})
+      }
+     
+    })
+  } 
+
+  getMovie();
+  // if()
+
+  console.log('default movie:', clickedMovie);
+  console.log('does this log out at all??');
+
+  
     return (
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
             component="img"
             className={classes.media}
-            image={ClickedMovie.poster}
+            image={clickedMovie.poster}
             
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-            {ClickedMovie.title}
+            {clickedMovie.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {ClickedMovie.description}
+              {clickedMovie.description}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -59,25 +76,7 @@ const Details = () => {
         </CardActions>
       </Card>
     );
-  }
   
-  if(ClickedMovie === {}) {
-    return (
-      <>
-        <h1>Not ready yet.</h1>
-      </>
-    );
-  }
-  
-
-  
-
-   
-  
-
-
- 
-
   }
 
 export default Details;

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import './MovieList.css'
 
 function MovieList() {
-
+    const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
-    const [id, setId] = useState('');
+    
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -17,13 +18,11 @@ function MovieList() {
         
         dispatch({type: 'CLICKED_MOVIE', payload: {
             id: event.target.id,
-            title: event.target.alt,
-            poster: event.target.src
         }
-    
     })
+        history.push('/details');
     }
-    console.log('id:', id);
+   
     return (
         <main>
             <h1>MovieList</h1>
@@ -33,10 +32,11 @@ function MovieList() {
                         <div 
                             key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} id={movie.id}
-                                onClick={clickedMovie}
-                                
-                            />
+
+                                <img src={movie.poster} alt={movie.title} id={movie.id} 
+                                    onClick={clickedMovie} />
+                            
+                           
                         </div>
                     );
                 })}
