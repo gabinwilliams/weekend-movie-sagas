@@ -42,6 +42,17 @@ const movies = (state = [], action) => {
     }
 }
 
+const clickedMovie = (state = {
+    poster: 'movie poster here',
+    title: 'movie title',
+    description: 'movie description'
+}, action) => {
+    if(action.type === 'CLICKED_MOVIE'){
+        state = action.payload;
+    }
+    return state;
+}
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
@@ -57,6 +68,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        clickedMovie,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
@@ -68,7 +80,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
