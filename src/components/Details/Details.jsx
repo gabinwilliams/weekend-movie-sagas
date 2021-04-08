@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     maxWidth: 345,
   },
   media: {
-    height: 140,
+    height: 400,
+    objectFit: 'contain',
   },
 });
 
@@ -34,13 +35,14 @@ const Details = () => {
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
+            component="img"
             className={classes.media}
             image={ClickedMovie.poster}
-            title={ClickedMovie.title}
+            
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Lizard
+            {ClickedMovie.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {ClickedMovie.description}
