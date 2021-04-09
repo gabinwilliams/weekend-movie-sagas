@@ -72,6 +72,9 @@ const clickedMovieGenre = (state = []
     if(action.type === 'CLICKED_MOVIE_GENRE'){
         state = [...state, action.payload];
     }
+    if(action.type === 'RESET'){
+        state = [];
+    }
     return state;
 }
 

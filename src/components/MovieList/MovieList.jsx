@@ -9,30 +9,18 @@ function MovieList() {
 
     const movies = useSelector(store => store.movies);
     const genres = useSelector(store => store.genres);
-
+    
     
     
     useEffect(() => {
+        
         dispatch({ type: 'FETCH_MOVIES' });
         dispatch({type: 'FETCH_GENRES'});
     }, []);
 
 
 
-//   const getMovie = () =>{
-//     movies.map(movie => {
-//       if(movie.id == clickedMovie.id) {
-//         console.log('This is found move:', movie);
-//         dispatch({type: 'CLICKED_MOVIE', payload: movie})
-//       }
-//       genres.map(genre => {
-//         if (clickedMovie.id == genres.movie_id) {
-          
-//         }
-//       })
-     
-//     })
-//   } 
+
 
     const clickedMovie = (event) => {
         event.preventDefault();
@@ -47,10 +35,10 @@ function MovieList() {
         genres.map(genre => {
             if(genre.movie_id == event.target.id) {
                 console.log('Here is the genre obj:', genre);
-                
                 dispatch({type: 'CLICKED_MOVIE_GENRE', payload: genre})
             }
         })
+       
         
 
         history.push(`/details`);

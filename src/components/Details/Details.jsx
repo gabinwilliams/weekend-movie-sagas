@@ -17,6 +17,23 @@ const useStyles = makeStyles({
     height: 400,
     objectFit: 'contain',
   },
+  span: {
+  
+    margin: 5,
+    color: 'white',
+    padding: 5,
+    backgroundColor: 'gray',
+    borderRadius: 10,
+  },
+  details: {
+    marginTop: 15,
+    
+  },
+  genres: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  }
+
 });
 
 
@@ -56,12 +73,13 @@ const Details = () => {
               <Typography gutterBottom variant="h5" component="h5">
               {clickedMovie.title}
               </Typography>
-              <Typography variant="body1" component="p">
+              <Typography className={classes.genres} variant="body1" component="p">
                   {clickedMovieGenre.map(genre => {
-                    return (<span key={genre.id}>{genre.genre}</span> )
+                    return (<span key={genre.id} className={classes.span}>{genre.genre}</span> )
                   })}
+              
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography className={classes.details} variant="body2" color="textSecondary" component="p">
                 {clickedMovie.description}
               </Typography>
             </CardContent>
