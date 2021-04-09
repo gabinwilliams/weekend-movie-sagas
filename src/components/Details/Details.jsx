@@ -23,7 +23,10 @@ const useStyles = makeStyles({
 
 const Details = () => {
 
+  const genres = useSelector(store => store.genres);
   const movies = useSelector(store => store.movies);
+  const clickedMovieGenre = useSelector(store => store.clickedMovieGenre);
+
 
   const clickedMovie = useSelector(store => store.clickedMovie);
   const classes = useStyles();
@@ -31,21 +34,11 @@ const Details = () => {
 
   
 
-  const getMovie = () =>{
-    movies.map(movie => {
-      if(movie.id == clickedMovie.id) {
-        console.log('This is found move:', movie);
-        dispatch({type: 'CLICKED_MOVIE', payload: movie})
-      }
-     
-    })
-  } 
-
-  getMovie();
-  // if()
 
   console.log('default movie:', clickedMovie);
   console.log('does this log out at all??');
+  console.log('genres movie object', genres);
+  console.log('clicked movie genre obj', clickedMovieGenre);
 
   
     return (
@@ -60,8 +53,13 @@ const Details = () => {
               
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h5" component="h5">
               {clickedMovie.title}
+              </Typography>
+              <Typography variant="body1" component="p">
+                  {clickedMovieGenre.map(genre => {
+                    return (<span key={genre.id}>{genre.genre}</span> )
+                  })}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {clickedMovie.description}
