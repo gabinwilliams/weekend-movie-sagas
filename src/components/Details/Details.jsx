@@ -49,32 +49,35 @@ const Details = () => {
 
   
     return (
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            className={classes.media}
-            image={clickedMovie.poster}
-            
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-            {clickedMovie.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {clickedMovie.description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
+      <>
+        
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              className={classes.media}
+              image={clickedMovie.poster}
+              
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+              {clickedMovie.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {clickedMovie.description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
+              Share
+            </Button>
+            <Button size="small" color="primary">
+              Learn More
+            </Button>
+          </CardActions>
+        </Card>
+      </>
     );
   
   }
