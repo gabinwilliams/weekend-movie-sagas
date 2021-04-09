@@ -1,10 +1,11 @@
 import {HashRouter as Router, Route, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import {Link} from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList';
 import Details from '../Details/Details';
-import {Link} from 'react-router-dom';
+import AddMovie from '../AddMovie/AddMovie';
+
 
 function App() {
   const history = useHistory();
@@ -22,6 +23,9 @@ function App() {
       <Router>  
         <Link onClick={reset} to='/'>
           <nav>Home</nav>
+        </Link> 
+        <Link to='/addMovie'>
+          <nav>Add Movie</nav>
         </Link>      
         <Route path="/" exact>
           <MovieList />
@@ -31,7 +35,11 @@ function App() {
           <Details />
         </Route>
 
-        {/* Add Movie page */}
+        <Route path="/addMovie" exact>
+          <AddMovie />
+        </Route>
+
+        
       </Router>
     </div>
   );
