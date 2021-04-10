@@ -1,0 +1,9 @@
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+body {
+  background-color: #e7e6e1;
+}

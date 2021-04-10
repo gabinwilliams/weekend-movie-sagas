@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './Details.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,18 +12,21 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    paddingTop: 20,
+    maxWidth: 600,
   },
   media: {
+   
     height: 400,
     objectFit: 'contain',
+    
   },
   span: {
-  
+    
     margin: 5,
     color: 'white',
     padding: 5,
-    backgroundColor: 'gray',
+    backgroundColor: '#f2a154',
     borderRadius: 10,
   },
   details: {
@@ -31,6 +35,7 @@ const useStyles = makeStyles({
   },
   genres: {
     display: 'flex',
+    justifyContent: 'center',
     flexWrap: 'wrap',
   }
 
@@ -50,6 +55,10 @@ const Details = () => {
   const dispatch = useDispatch();
 
   
+    
+  
+
+  
 
 
   console.log('default movie:', clickedMovie);
@@ -58,8 +67,10 @@ const Details = () => {
   console.log('clicked movie genre obj', clickedMovieGenre);
 
   
+  
     return (
-      <>
+
+      <div className="cardContainer">
         
         <Card className={classes.root}>
           <CardActionArea>
@@ -93,9 +104,9 @@ const Details = () => {
             </Button>
           </CardActions>
         </Card>
-      </>
+      </div>
     );
-  
+    
   }
 
 export default Details;

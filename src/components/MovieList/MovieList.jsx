@@ -9,6 +9,7 @@ function MovieList() {
 
     const movies = useSelector(store => store.movies);
     const genres = useSelector(store => store.genres);
+    const clickedMovieGenre = useSelector(store => store.clickedMovieGenre);
     
     
     
@@ -25,6 +26,8 @@ function MovieList() {
     const clickedMovie = (event) => {
         event.preventDefault();
         console.log('clicked:', event.target.id);
+
+        dispatch({type: 'RESET', payload: clickedMovieGenre})
 
         movies.map(movie => {
             if(movie.id == event.target.id) {

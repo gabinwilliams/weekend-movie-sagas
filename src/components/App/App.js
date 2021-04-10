@@ -12,6 +12,8 @@ function App() {
   const dispatch = useDispatch();
   const clickedMovieGenre = useSelector(store => store.clickedMovieGenre);
 
+
+
   const reset = () => {
     dispatch({type: 'RESET', payload: clickedMovieGenre})
   }
@@ -21,12 +23,17 @@ function App() {
     <div className="App">
       <h1>The Movies Saga!</h1>
       <Router>  
-        <Link onClick={reset} to='/'>
-          <nav>Home</nav>
-        </Link> 
-        <Link to='/addMovie'>
-          <nav>Add Movie</nav>
-        </Link>      
+        
+          <nav>
+            <Link onClick={reset} to='/'>
+              Home
+            </Link> 
+            <Link to='/addMovie'>
+               Add Movie
+            </Link>  
+
+          </nav>
+            
         <Route path="/" exact>
           <MovieList />
         </Route>

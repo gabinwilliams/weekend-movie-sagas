@@ -78,6 +78,30 @@ const clickedMovieGenre = (state = []
     return state;
 }
 
+
+
+const newMovieObj = (state = {}
+   
+    , action) => {
+        if(action.type === 'SEND_MOVIE'){
+            state = [action.payload];
+
+            console.log('In newMovieObj to send:', action.payload);
+        axios.post('/api/movie', action.payload)
+        .then((response) => {
+        
+        })
+        .catch((err) => {
+            console.log("Error in POST", err);
+        });
+        }
+
+        if(action.type === 'RESET_MOVIE'){
+            state = [];
+        }
+        return state;
+    }
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
@@ -95,6 +119,7 @@ const storeInstance = createStore(
         genres,
         clickedMovie,
         clickedMovieGenre,
+        newMovieObj,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
@@ -104,10 +129,10 @@ const storeInstance = createStore(
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <Provider store={storeInstance}>
             <App />
         </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
+    // </React.StrictMode>,
+    ,document.getElementById('root')
 );
