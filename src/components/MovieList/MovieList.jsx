@@ -17,8 +17,9 @@ const useStyles = makeStyles({
       display: 'flex',
       justifyContent: 'center',
       maxWidth: 345,
-      padding: 10,
+      padding: 20,
       margin: 5,
+      
     
       
     },
@@ -90,7 +91,7 @@ function MovieList() {
    
     return (
         <main>
-            <h1>MovieList</h1>
+            
             <section className="movies">
                 {movies.map(movie => {
                     return (

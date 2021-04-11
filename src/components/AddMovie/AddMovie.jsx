@@ -1,13 +1,17 @@
 import {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import './AddMovie.css';
 
 const AddMovie = () => {
 
+  const history = useHistory();
   const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
@@ -22,6 +26,17 @@ const AddMovie = () => {
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    button: {
+     marginTop: 20,
+     padding: 10
+
+    },
+    saveBtn: {
+      margin: 5,
+    },
+    cancelBtn: {
+      margin: 5,
+    }
   }));
 
   
@@ -88,46 +103,60 @@ const AddMovie = () => {
     }})
   }
 
+  const handleCancel = (event) => {
+    console.log('clicked cancel');
 
+    history.push('/');
+  }
 
 
 
   return (
 
-    <div>
-      <form onChange={handleGetTitle} className={classes.root} noValidate autoComplete="off">
-        <TextField label="Enter Title" />
-      </form>
-      <form onChange={handleGetUrl} className={classes.root} noValidate autoComplete="off">
-        <TextField label="Enter image URL" />
-      </form>
-      <form onChange={handleGetDescription} className={classes.root} noValidate autoComplete="off">
-        <TextField
-          id="outlined-multiline-static"
-          label="Description"
-          multiline
-          rows={4}
-          variant="outlined"
-        />
-      </form>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="age-native-simple">Genre</InputLabel>
-        <Select
-          native
-          onChange={handleGetGenre}
+    <div className="container">
+      <div className="formContainer">
+        <form onChange={handleGetTitle} className={classes.root} noValidate autoComplete="off">
+          <TextField label="Enter Title" />
+        </form>
+        <form onChange={handleGetUrl} className={classes.root} noValidate autoComplete="off">
+          <TextField label="Enter image URL" />
+        </form>
+        <form onChange={handleGetDescription} className={classes.root} noValidate autoComplete="off">
+          <TextField
+            id="outlined-multiline-static"
+            label="Description"
+            multiline
+            rows={4}
+            variant="outlined"
+          />
+        </form>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="age-native-simple">Genre</InputLabel>
+          <Select
+            native
+            onChange={handleGetGenre}
 
-        >
-          <option aria-label="None" value="" />
-          {genres.map((genre) => {
-            return (
-              <option key={genre.id} value={genre.genre} >{genre.genre}</option>
-            )
-          })}
+          >
+            <option aria-label="None" value="" />
+            {genres.map((genre) => {
+              return (
+                <option key={genre.id} value={genre.genre} >{genre.genre}</option>
+              )
+            })}
+            
+            
+          </Select>
+        </FormControl>
+        
+        <div className={classes.button}>
+          <Button className={classes.saveBtn} size="small" variant="contained" onClick={submitMovie} >Save</Button>
           
-          
-        </Select>
-      </FormControl>
-      <button onClick={submitMovie} >Submit</button>
+          <Button className={classes.cancelBtn} onClick={handleCancel} size="small" variant="contained" >Cancel</Button>
+         
+        </div>
+
+       
+      </div>
     </div>
   )
 }

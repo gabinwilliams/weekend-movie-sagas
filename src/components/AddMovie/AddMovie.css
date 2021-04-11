@@ -1,0 +1,19 @@
+.container {
+margin-top: 50px;
+display: flex;
+justify-content: center;
+
+}
+
+.formContainer {
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background-color: #93a8ac;
+  width: fit-content;
+  padding: 50px;
+  border-radius: 5px;
+
+}
