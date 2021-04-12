@@ -88,12 +88,17 @@ const AddMovie = () => {
     console.log("clicked");
 
     if (
-      (selectedTitle.length > 0) &
-      (selectedGenre.length >
-        0 % selectedUrl.length >
-        0 % selectedDescription.length >
-        0)
-    ) {
+      selectedTitle == '',
+      selectedGenre == '' ,
+      selectedUrl == '' ,
+      selectedDescription == '' )
+        
+     { 
+      alert("Please fill inputs");
+      
+    } else {
+
+
       dispatch({
         type: "SEND_MOVIE",
         payload: {
@@ -104,8 +109,6 @@ const AddMovie = () => {
           description: selectedDescription,
         },
       });
-    } else {
-      alert("Please fill inputs");
     }
   };
 
