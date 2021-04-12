@@ -1,12 +1,10 @@
 .container {
-margin-top: 50px;
-display: flex;
-justify-content: center;
-
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .formContainer {
-
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -15,5 +13,4 @@ justify-content: center;
   width: fit-content;
   padding: 50px;
   border-radius: 5px;
-
 }
