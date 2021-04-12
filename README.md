@@ -6,7 +6,7 @@ This is Movie Gallery fullstack app!
 
 The point of the project was to practice using redux-sagas and reinforce redux state-management in a single page app.
 
-![screenshot of the app](https://github.com/gabinwilliams/redux-feedback-loop/blob/master/wireframes/gif/feedback-loop.gif)
+![gif of the app](https://github.com/gabinwilliams/weekend-movie-sagas/blob/master/wireframes/AppGif.gif)
 
 ### Prerequisites
 
